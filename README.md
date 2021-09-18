@@ -83,3 +83,13 @@ System.out.println(predicate.test("I love java8")); // true
 System.out.println(predicate.test("I love java9")); // false
 ```
 In, above example we are checking if string contains "java8" in it or not.
+
+### Runnable:
+1. Neither take anything not produce anything.
+2. Just perform some task on thread.
+
+Example:
+```
+Runnable task = () -> {System.out.println("Running something here");};
+new Thread(task).start();
+```
