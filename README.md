@@ -31,3 +31,18 @@ public class Java8FeaturesApplication {
 2. Provide the signature of your abstract method.
 3. The most important part : **This is the place where we will actually provide business logic that we want to perform using signature that we have provided in interface.** Here we are saying that we want to perform addition.
 4. Here we will actually call the method and pass the arguments to execute the business logic.
+
+## **Types of functional Interface**
+### Consumer :
+1. It only consumes the data & performs the operation on it
+2. Does not return anything
+
+Example:
+```
+		// Consumer
+		Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
+		consumerOfInteger.accept(5); // 10 ---->2
+```
+In above code we are saying that
+1. Define a consumer which consumes the argument "x", multiply it with 2 and then print it.
+2. User the consumer and call the **accept** method with the actual Integer value.
