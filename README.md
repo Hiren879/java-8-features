@@ -39,10 +39,24 @@ public class Java8FeaturesApplication {
 
 Example:
 ```
-// Consumer
-Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
-consumerOfInteger.accept(5); // 10 ---->2
+		// Consumer
+		Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
+		consumerOfInteger.accept(5); // 10 ---->2
 ```
 In above code we are saying that
 1. Define a consumer which consumes the argument "x", multiply it with 2 and then print it.
-2. User the consumer and call the **accept** method with the actual Integer value.
+2.  User the consumer and call the **accept** method with the actual Integer value. 
+
+### Supplier (Producer):
+1. It does not take any input.
+2. But it will supply/produce something.
+
+Example:
+```
+Supplier<Integer> supplierOfInteger = () -> new Random()
+	.ints(0, 50) // get random number from the range o to 50
+	.findFirst() // get the stream and findFirst
+	.getAsInt(); // return it as an Integer
+	
+System.out.println(supplierOfInteger.get()); // call the get() on supplier
+```
