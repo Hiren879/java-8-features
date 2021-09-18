@@ -71,3 +71,15 @@ Function<Integer, String> function = x -> (x * 2) + "";
 System.out.println(function.apply(10)); // 20
 ```
 In above example, we are accepting **Integer** and returning **String** value after doing multiplication with 2.
+
+### Predicate:
+1. Takes the input.
+2. Returns the boolean (true/false).
+
+Example:
+```
+Predicate<String> predicate = x -> x.contains("java8");
+System.out.println(predicate.test("I love java8")); // true
+System.out.println(predicate.test("I love java9")); // false
+```
+In, above example we are checking if string contains "java8" in it or not.

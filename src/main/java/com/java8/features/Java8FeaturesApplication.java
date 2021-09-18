@@ -3,6 +3,7 @@ package com.java8.features;
 import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class Java8FeaturesApplication {
@@ -32,6 +33,12 @@ public class Java8FeaturesApplication {
 		System.out.println("Function Example");
 		Function<Integer, String> function = x -> (x * 2) + "";
 		System.out.println(function.apply(10)); // 20
+
+		// Predicate
+		System.out.println("Predicate Example");
+		Predicate<String> predicate = x -> x.contains("java8");
+		System.out.println(predicate.test("I love java8")); // true
+		System.out.println(predicate.test("I love java9")); // false
 	}
 }
 
