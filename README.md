@@ -39,9 +39,9 @@ public class Java8FeaturesApplication {
 
 Example:
 ```
-		// Consumer
-		Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
-		consumerOfInteger.accept(5); // 10 ---->2
+// Consumer
+Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
+consumerOfInteger.accept(5); // 10 ---->2
 ```
 In above code we are saying that
 1. Define a consumer which consumes the argument "x", multiply it with 2 and then print it.
