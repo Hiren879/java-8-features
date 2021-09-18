@@ -39,9 +39,9 @@ public class Java8FeaturesApplication {
 
 Example:
 ```
-		// Consumer
-		Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
-		consumerOfInteger.accept(5); // 10 ---->2
+// Consumer
+Consumer<Integer> consumerOfInteger = (x) -> System.out.println(x*2); // ----->1
+consumerOfInteger.accept(5); // 10 ---->2
 ```
 In above code we are saying that
 1. Define a consumer which consumes the argument "x", multiply it with 2 and then print it.
@@ -60,3 +60,14 @@ Supplier<Integer> supplierOfInteger = () -> new Random()
 	
 System.out.println(supplierOfInteger.get()); // call the get() on supplier
 ```
+
+### Function:
+1. It will take something as an input.
+2. And it will return something as an output.
+
+Example:
+```
+Function<Integer, String> function = x -> (x * 2) + "";
+System.out.println(function.apply(10)); // 20
+```
+In above example, we are accepting **Integer** and returning **String** value after doing multiplication with 2.

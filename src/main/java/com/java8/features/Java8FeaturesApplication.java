@@ -2,11 +2,14 @@ package com.java8.features;
 
 import java.util.Random;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class Java8FeaturesApplication {
 
 	public static void main(String[] args) {
+		// Custom functional Interface
+		System.out.println("Custom functional interface Example");
 		Operationable addition = (x, y) -> x + y;
 		int result1 = addition.calculate(10, 5);
 		System.out.println(result1); // 15
@@ -24,6 +27,11 @@ public class Java8FeaturesApplication {
 		System.out.println("Supplier Example");
 		Supplier<Integer> supplierOfInteger = () -> new Random().ints(0, 50).findFirst().getAsInt();
 		System.out.println(supplierOfInteger.get());
+
+		// Function
+		System.out.println("Function Example");
+		Function<Integer, String> function = x -> (x * 2) + "";
+		System.out.println(function.apply(10)); // 20
 	}
 }
 
