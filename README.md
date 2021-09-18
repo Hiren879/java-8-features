@@ -85,11 +85,22 @@ System.out.println(predicate.test("I love java9")); // false
 In, above example we are checking if string contains "java8" in it or not.
 
 ### Runnable:
-1. Neither take anything not produce anything.
+1. Neither take anything nor produce anything.
 2. Just perform some task on thread.
 
 Example:
 ```
 Runnable task = () -> {System.out.println("Running something here");};
 new Thread(task).start();
+```
+
+### Bi-Consumer:
+1. Takes two input. May be of same type, may be not of the same type.
+2. Does not produce/return anything.
+
+Example:
+```
+BiConsumer<Integer, Integer> biConsumer = (x, y) -> {
+	System.out.println("x into y is : " + x * y);};
+biConsumer.accept(5, 5); // 25
 ```

@@ -1,6 +1,7 @@
 package com.java8.features;
 
 import java.util.Random;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -39,11 +40,20 @@ public class Java8FeaturesApplication {
 		Predicate<String> predicate = x -> x.contains("java8");
 		System.out.println(predicate.test("I love java8")); // true
 		System.out.println(predicate.test("I love java9")); // false
-		
+
 		// Runnable
 		System.out.println("Runnable Example");
-		Runnable task = () -> {System.out.println("Running something here");};
+		Runnable task = () -> {
+			System.out.println("Running something here");
+		};
 		new Thread(task).start();
+
+		// Bi-Consumer
+		System.out.println("Bi-Consumer Example");
+		BiConsumer<Integer, Integer> biConsumer = (x, y) -> {
+			System.out.println("x into y is : " + x * y);
+		};
+		biConsumer.accept(5, 5); // 25
 	}
 }
 
