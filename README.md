@@ -104,3 +104,10 @@ BiConsumer<Integer, Integer> biConsumer = (x, y) -> {
 	System.out.println("x into y is : " + x * y);};
 biConsumer.accept(5, 5); // 25
 ```
+
+## **Default Interface Method**
+1. Interface having methods with the method body is called default interface method.
+2. Class implementing such interface need not to always implement such method.
+3. In case of diamond problem, class needs to provide its own implementation for all such methods.
+4. Same needs to be done in case of one interface has default method and other has abstract method.
+
