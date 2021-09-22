@@ -111,3 +111,8 @@ biConsumer.accept(5, 5); // 25
 3. In case of diamond problem, class needs to provide its own implementation for all such methods.
 4. Same needs to be done in case of one interface has default method and other has abstract method.
 
+## **Optional**
+1. A container object which may or may not contain a non-null value.
+2. if value if present -> true
+3. if not -> false
+4. get() will provide the actual value.
