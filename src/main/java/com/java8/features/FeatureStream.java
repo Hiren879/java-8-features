@@ -14,10 +14,8 @@ public class FeatureStream {
 
 		// get emp where lname is Patel
 		System.out.println("where last name = patel");
-		List<Employee> lnamePatelList = 
-				empList.stream()
-					.filter(e -> e.getLname().equalsIgnoreCase("Patel"))
-					.collect(Collectors.toList());
+		List<Employee> lnamePatelList = empList.stream().filter(e -> e.getLname().equalsIgnoreCase("Patel"))
+				.collect(Collectors.toList());
 		System.out.println(lnamePatelList);
 		System.out.println();
 
@@ -71,6 +69,20 @@ public class FeatureStream {
 		System.out.println("convert into Map<Integer, Employee> :: <UserId, Employee>");
 		Map<Integer, Employee> empMap = empList.stream().collect(Collectors.toMap(c -> c.getUserId(), c -> c));
 		System.out.println(empMap);
+		System.out.println();
+
+		// Emp groupBy City
+		System.out.println("Emp groupBy City");
+		Map<String, List<Employee>> empCityGroupByMap = empList.stream()
+				.collect(Collectors.groupingBy(e -> String.valueOf(e.getAddress().getCity())));
+		System.out.println(empCityGroupByMap);
+		System.out.println();
+
+		// Get Emp count groupBy City
+		System.out.println("Emp count groupBy City");
+		Map<String, Long> empCountGroupByCity = empList.stream()
+				.collect(Collectors.groupingBy(e -> String.valueOf(e.getAddress().getCity()), Collectors.counting()));
+		System.out.println(empCountGroupByCity);
 		System.out.println();
 	}
 

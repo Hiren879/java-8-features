@@ -215,3 +215,17 @@ Map<Integer, Employee> empMap =
 		empList.stream()
 			.collect(Collectors.toMap(c -> c.getUserId(), c -> c));
 ```
+
+9. Emp groupBy City
+```
+Map<String, List<Employee>> empCityGroupByMap = 
+		empList.stream()
+			.collect(Collectors.groupingBy(e -> String.valueOf(e.getAddress().getCity())));
+``` 
+
+10. Get Emp count groupBy City
+```
+Map<String, Long> empCountGroupByCity = 
+		empList.stream()
+			.collect(Collectors.groupingBy(e -> String.valueOf(e.getAddress().getCity()), Collectors.counting()));
+```
