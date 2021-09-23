@@ -129,3 +129,15 @@ System.out.println(intValue);
 optInteger = Optional.empty();
 optInteger.orElseThrow(RuntimeException::new);
 ```
+
+## **Streams**
+### What is Stream ?
+- Pipeline of aggregate operations
+
+### Characteristics of a Stream
+- **Declarative**: stream tells what has to be done but not how.
+- **Lazy**: if you won't call terminal operation, our stream won't be doing anything.
+- **Only Once**: You can consume it only once.
+- **Parallelized**: by default stream is sequential but you can make it to run parallel. 
+
+
