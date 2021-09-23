@@ -153,65 +153,65 @@ Examples:
 1. Get emp where lname is Patel
 ```
 List<Employee> lnamePatelList = 
-				empList.stream()
-					.filter(e -> e.getLname().equalsIgnoreCase("Patel"))
-					.collect(Collectors.toList());
+		empList.stream()
+			.filter(e -> e.getLname().equalsIgnoreCase("Patel"))
+			.collect(Collectors.toList());
 ```
 
 2. Get emp where salary is greater than 50000
 ```
 List<Employee> salaryMoreThan50KList = 
-				empList.stream()
-					.filter(e -> e.getSalary() > 50000)
-					.collect(Collectors.toList());
+		empList.stream()
+			.filter(e -> e.getSalary() > 50000)
+			.collect(Collectors.toList());
 ```
 
 3. Sort emp by salary asc
 ```
 List<Employee> sortedBySalaryAsc = 
-				empList.stream()
-					.sorted(Comparator.comparingInt(Employee::getSalary))
-					.collect(Collectors.toList());
+		empList.stream()
+			.sorted(Comparator.comparingInt(Employee::getSalary))
+			.collect(Collectors.toList());
 ```
 
 4. Sort emp by salary des
 ```
 List<Employee> sortedBySalaryDes = 
-				empList.stream()
-					.sorted(Comparator.comparingInt(Employee::getSalary).reversed())
-					.collect(Collectors.toList());
+		empList.stream()
+			.sorted(Comparator.comparingInt(Employee::getSalary).reversed())
+			.collect(Collectors.toList());
 ```
 
 5. Sort emp by firstName & then lastName
 ```
 List<Employee> sortedByFnameLname = 
-				empList.stream()
-					.sorted(Comparator.comparing(Employee::getFname).thenComparing(Employee::getLname))
-					.collect(Collectors.toList());
+		empList.stream()
+			.sorted(Comparator.comparing(Employee::getFname).thenComparing(Employee::getLname))
+			.collect(Collectors.toList());
 ```
 
 6. Increase all emp salary by 20% and sort by salary
 ```
 List<Employee> increaseSalaryBy20Per = 
-				empList.stream().map(e -> {
-					int newSalary = (int) (e.getSalary() + (e.getSalary() * 0.20));
-					e.setSalary(newSalary);
-					return e;
-				})
-				.sorted(Comparator.comparingInt(Employee::getSalary))
-				.collect(Collectors.toList());
+		empList.stream().map(e -> {
+			int newSalary = (int) (e.getSalary() + (e.getSalary() * 0.20));
+			e.setSalary(newSalary);
+			return e;
+			})
+			.sorted(Comparator.comparingInt(Employee::getSalary))
+			.collect(Collectors.toList());
 ```
 
 7. Group emp by Male & Female
 ```
 Map<Character, List<Employee>> groupByMap = 
-				empList.stream()
-					.collect(Collectors.groupingBy(Employee::getGender));
+		empList.stream()
+			.collect(Collectors.groupingBy(Employee::getGender));
 ```
 
 8. Convert list into Map<Integer, Employee> :: <UserId, Employee>
 ```
 Map<Integer, Employee> empMap = 
-				empList.stream()
-					.collect(Collectors.toMap(c -> c.getUserId(), c -> c));
+		empList.stream()
+			.collect(Collectors.toMap(c -> c.getUserId(), c -> c));
 ```
