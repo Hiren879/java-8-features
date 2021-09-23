@@ -193,13 +193,14 @@ List<Employee> sortedByFnameLname =
 6. Increase all emp salary by 20% and sort by salary
 ```
 List<Employee> increaseSalaryBy20Per = 
-		empList.stream().map(e -> {
+		empList.stream()
+		.map(e -> {
 			int newSalary = (int) (e.getSalary() + (e.getSalary() * 0.20));
 			e.setSalary(newSalary);
 			return e;
-			})
-			.sorted(Comparator.comparingInt(Employee::getSalary))
-			.collect(Collectors.toList());
+		 })
+		.sorted(Comparator.comparingInt(Employee::getSalary))
+		.collect(Collectors.toList());
 ```
 
 7. Group emp by Male & Female
