@@ -2,8 +2,10 @@ package com.java8.features;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FeatureStream {
@@ -83,6 +85,27 @@ public class FeatureStream {
 		Map<String, Long> empCountGroupByCity = empList.stream()
 				.collect(Collectors.groupingBy(e -> String.valueOf(e.getAddress().getCity()), Collectors.counting()));
 		System.out.println(empCountGroupByCity);
+		System.out.println();
+
+		// Get salary total of all the employees
+		System.out.println("Map Reduce : Get salary total of all the employees");
+		int allEmpSalary = empList.stream().mapToInt(Employee::getSalary).reduce(0, (e1, e2) -> e1 + e2);
+		System.out.println(allEmpSalary);
+		System.out.println();
+
+		// Get emp having minimum salary
+		Optional<Employee> minSalaryEmpOpt = empList.stream().min(Comparator.comparing(Employee::getSalary));
+		Employee minSalaryEmp = minSalaryEmpOpt.get();
+		System.out.println("Min Salary Emp Name is :: " + minSalaryEmp.getFname() + " " + minSalaryEmp.getLname()
+				+ " Min Salary is :: " + minSalaryEmp.getSalary());
+		System.out.println();
+
+		// Group by salary and sort it
+		System.out.println("Group & sort by salary");
+		Map<Integer, List<Employee>> empSalaryMap = empList.stream().collect(Collectors.groupingBy(Employee::getSalary))
+				.entrySet().stream().sorted(Map.Entry.comparingByKey()).collect(Collectors.toMap(Map.Entry::getKey,
+						Map.Entry::getValue, (firstObject, conflictedObject) -> firstObject, LinkedHashMap::new));
+		System.out.println(empSalaryMap);
 		System.out.println();
 	}
 
@@ -164,6 +187,25 @@ public class FeatureStream {
 		emp4.setSalary(40000);
 		emp4.setAddress(address4);
 		employeeList.add(emp4);
+
+		// emp5
+		Employee emp5 = new Employee();
+		Address address5 = new Address();
+		address5.setAddressLine1("Some Street5");
+		address5.setAddressLine2("Some road5");
+		address5.setArea("some area5");
+		address5.setCity("Rajkot");
+		address5.setCountry("India");
+		address5.setPinCode(123276);
+		emp5.setUserId(5000);
+		emp5.setFname("Jay");
+		emp5.setLname("Patel");
+		emp5.setGender('M');
+		emp5.setPhoneNumber(923483777);
+		emp5.setAge(27);
+		emp5.setSalary(30000);
+		emp5.setAddress(address5);
+		employeeList.add(emp5);
 
 		return employeeList;
 	}

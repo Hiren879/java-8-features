@@ -230,3 +230,23 @@ Map<String, Long> empCountGroupByCity =
 		empList.stream()
 			.collect(Collectors.groupingBy(e -> String.valueOf(e.getAddress().getCity()), Collectors.counting()));
 ```
+
+11. Get total salary of all emp using **reduce**
+```
+int allEmpSalary = empList.stream()
+		.mapToInt(Employee::getSalary)
+		.reduce(0, (e1, e2) -> e1 + e2);
+```
+
+12. Group by salary, sort it and collect in map
+- First groupBy salary
+- then get the stream of the entrySet
+- then sort it by KEY
+- and collect to linkedHashMap
+```
+Map<Integer, List<Employee>> empSalaryMap = 
+		empList.stream().collect(Collectors.groupingBy(Employee::getSalary))
+		.entrySet().stream().sorted(Map.Entry.comparingByKey())
+		.collect(Collectors.toMap(Map.Entry::getKey,
+			Map.Entry::getValue, (firstObject, conflictedObject) -> firstObject, LinkedHashMap::new));
+```
