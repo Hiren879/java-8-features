@@ -116,6 +116,13 @@ public class FeatureStream {
 				.collect(Collectors.toSet());
 		System.out.println(knownLanguages);
 		System.out.println();
+
+		// FlatMap :: Sort data without using stream
+		System.out.println("Sort data without using Stream");
+		List<Employee> freshEmpList = streamTest.getEmpData();
+		freshEmpList.sort(Comparator.comparing(Employee::getSalary));
+		System.out.println(freshEmpList);
+		System.out.println();
 	}
 
 	public List<Employee> getEmpData() {
