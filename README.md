@@ -262,3 +262,8 @@ Set<String> knownLanguages =
 - call flatMap on it
 - get the stream of it
 - collect it
+
+14. Sort data without using the Stream
+~~~
+freshEmpList.sort(Comparator.comparing(Employee::getSalary));
+~~~
