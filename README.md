@@ -238,7 +238,7 @@ int allEmpSalary = empList.stream()
 		.reduce(0, (e1, e2) -> e1 + e2);
 ```
 
-12. Group by salary, sort it and collect in map
+12. **Group by salary, sort it and collect in map**
 - First groupBy salary
 - then get the stream of the entrySet
 - then sort it by KEY
@@ -250,3 +250,15 @@ Map<Integer, List<Employee>> empSalaryMap =
 		.collect(Collectors.toMap(Map.Entry::getKey,
 			Map.Entry::getValue, (firstObject, conflictedObject) -> firstObject, LinkedHashMap::new));
 ```
+
+13. **FlapMap** : used to flat the data to the same level
+```
+Set<String> knownLanguages = 
+	empList.stream().map(e -> e.getLanguagesKnown())
+		.flatMap(l -> l.stream())
+		.collect(Collectors.toSet());
+```
+- Get the hierarchical dataSet from the object
+- call flatMap on it
+- get the stream of it
+- collect it

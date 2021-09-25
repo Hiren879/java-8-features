@@ -1,11 +1,13 @@
 package com.java8.features;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FeatureStream {
@@ -107,6 +109,13 @@ public class FeatureStream {
 						Map.Entry::getValue, (firstObject, conflictedObject) -> firstObject, LinkedHashMap::new));
 		System.out.println(empSalaryMap);
 		System.out.println();
+
+		// FlatMap :: Get all the unique languages using flatMap
+		System.out.println("FlatMap :: Get all the languages using flatMap");
+		Set<String> knownLanguages = empList.stream().map(e -> e.getLanguagesKnown()).flatMap(l -> l.stream())
+				.collect(Collectors.toSet());
+		System.out.println(knownLanguages);
+		System.out.println();
 	}
 
 	public List<Employee> getEmpData() {
@@ -129,6 +138,7 @@ public class FeatureStream {
 		emp1.setAge(30);
 		emp1.setSalary(50000);
 		emp1.setAddress(address1);
+		emp1.setLanguagesKnown(Arrays.asList("Hindi", "Gujarati", "English"));
 		employeeList.add(emp1);
 
 		// emp2
@@ -148,6 +158,7 @@ public class FeatureStream {
 		emp2.setAge(40);
 		emp2.setSalary(30000);
 		emp2.setAddress(address2);
+		emp2.setLanguagesKnown(Arrays.asList("Hindi", "Gujarati", "English", "Urdu"));
 		employeeList.add(emp2);
 
 		// emp3
@@ -167,6 +178,7 @@ public class FeatureStream {
 		emp3.setAge(25);
 		emp3.setSalary(60000);
 		emp3.setAddress(address3);
+		emp3.setLanguagesKnown(Arrays.asList("English"));
 		employeeList.add(emp3);
 
 		// emp4
@@ -186,6 +198,7 @@ public class FeatureStream {
 		emp4.setAge(27);
 		emp4.setSalary(40000);
 		emp4.setAddress(address4);
+		emp4.setLanguagesKnown(Arrays.asList("Hindi", "Gujarati", "English", "French", "Punjabi"));
 		employeeList.add(emp4);
 
 		// emp5
@@ -205,6 +218,8 @@ public class FeatureStream {
 		emp5.setAge(27);
 		emp5.setSalary(30000);
 		emp5.setAddress(address5);
+		emp5.setLanguagesKnown(
+				Arrays.asList("Hindi", "Gujarati", "English", "French", "Punjabi", "Marathi", "Bangali"));
 		employeeList.add(emp5);
 
 		return employeeList;
@@ -284,11 +299,20 @@ class Employee {
 	private Address address;
 	private int phoneNumber;
 	private int salary;
+	private List<String> languagesKnown;
 
 	@Override
 	public String toString() {
 		return "Employee [userId=" + userId + ", fname=" + fname + ", lname=" + lname + ", age=" + age + ", gender="
 				+ gender + ", address=" + address + ", phoneNumber=" + phoneNumber + ", salary=" + salary + "]";
+	}
+
+	public List<String> getLanguagesKnown() {
+		return languagesKnown;
+	}
+
+	public void setLanguagesKnown(List<String> languagesKnown) {
+		this.languagesKnown = languagesKnown;
 	}
 
 	public int getUserId() {
