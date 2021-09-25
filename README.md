@@ -1,5 +1,6 @@
 # Java 8 features
 This repository is developed to understand most commonly used java 8 futures.
+Along with it I tried to write down SOLID principles problems & solutions using examples here [a link](https://github.com/Hiren879/java-8-features/blob/main/Solid_Principles.md).
 
 ## **Lambda Expressions**
 1. The **interface** having just one abstract method is known as functional interface.
