@@ -59,3 +59,5 @@ To implement **OCP principle** in above scenario, we can create one interface ha
 
 
 Here **NotificationService** interface will define the behavior of the implementation and class who will implement this interface need to provide the business logic according to their requirements.
+
+**By doing this we are not modifying existing BAU of any other class whenever new requirement comes which is the main goal of this principle.**
